@@ -22,9 +22,8 @@ if (env.BRANCH_NAME == "master") {
   ])
 }
 
-def docker_image_dind = 'docker:18.06.0-ce-dind'
 def docker_image = 'docker:18.06.0-ce'
-def build_image = 'pegasyseng/pantheon-build:0.0.5-jdk11'
+def build_image = 'pegasyseng/pantheon-build:0.0.5-jdk8'
 
 def abortPreviousBuilds() {
   Run previousBuild = currentBuild.rawBuild.getPreviousBuildInProgress()
@@ -53,7 +52,7 @@ try {
     def stage_name = "Unit tests node: "
     node {
       checkout scm
-      docker.image(docker_image_dind).withRun('--privileged') { d ->
+      docker.image(docker_image).withRun('--privileged') { d ->
         docker.image(build_image).inside("--link ${d.id}:docker") {
           try {
             stage(stage_name + 'Prepare') {
@@ -62,7 +61,7 @@ try {
             stage(stage_name + 'Unit tests') {
               sh './gradlew --no-daemon --parallel build'
             }
-            if (env.BRANCH_NAME != "master") {
+            if (env.BRANCH_NAME == "master") {
               stage(stage_name + 'Bintray Upload') {
                 withCredentials([
                     usernamePassword(
@@ -80,7 +79,6 @@ try {
             archiveArtifacts '**/build/test-results/**'
             archiveArtifacts 'build/reports/**'
             archiveArtifacts 'build/distributions/**'
-//                        stash allowEmpty: true, includes: 'build/distributions/pantheon-*.tar.gz', name: 'distTarBall'
             junit '**/build/test-results/**/*.xml'
           }
         }
@@ -104,37 +102,33 @@ try {
 //            }
 //        }
   }
-  if (env.BRANCH_NAME == "master") {
-    //TODO add maven snapshot push
-  }
-} catch (e) {
+} catch (ignore) {
   currentBuild.result = 'FAILURE'
 } finally {
-  // If we're on master and it failed, notify slack
-//    if (env.BRANCH_NAME == "master") {
-//        def currentResult = currentBuild.result ?: 'SUCCESS'
-//        def channel = '#priv-pegasys-prod-dev'
-//        if (currentResult == 'SUCCESS') {
-//            def previousResult = currentBuild.previousBuild?.result
-//            if (previousResult != null && (previousResult == 'FAILURE' || previousResult == 'UNSTABLE')) {
-//                slackSend(
-//                    color: 'good',
-//                    message: "Pantheon branch ${env.BRANCH_NAME} build is back to HEALTHY.\nBuild Number: #${env.BUILD_NUMBER}\n${env.BUILD_URL}",
-//                    channel: channel
-//                )
-//            }
-//        } else if (currentBuild.result == 'FAILURE') {
-//            slackSend(
-//                color: 'danger',
-//                message: "Pantheon branch ${env.BRANCH_NAME} build is FAILING.\nBuild Number: #${env.BUILD_NUMBER}\n${env.BUILD_URL}",
-//                channel: channel
-//            )
-//        } else if (currentBuild.result == 'UNSTABLE') {
-//            slackSend(
-//                color: 'warning',
-//                message: "Pantheon branch ${env.BRANCH_NAME} build is UNSTABLE.\nBuild Number: #${env.BUILD_NUMBER}\n${env.BUILD_URL}",
-//                channel: channel
-//            )
-//        }
-//    }
+    if (env.BRANCH_NAME == "master") {
+        def currentResult = currentBuild.result ?: 'SUCCESS'
+        def channel = '#priv-pegasys-prod-dev'
+        if (currentResult == 'SUCCESS') {
+            def previousResult = currentBuild.previousBuild?.result
+            if (previousResult != null && (previousResult == 'FAILURE' || previousResult == 'UNSTABLE')) {
+                slackSend(
+                    color: 'good',
+                    message: "Pantheon Plugins API branch ${env.BRANCH_NAME} build is back to HEALTHY.\nBuild Number: #${env.BUILD_NUMBER}\n${env.BUILD_URL}",
+                    channel: channel
+                )
+            }
+        } else if (currentBuild.result == 'FAILURE') {
+            slackSend(
+                color: 'danger',
+                message: "Pantheon Plugins API branch ${env.BRANCH_NAME} build is FAILING.\nBuild Number: #${env.BUILD_NUMBER}\n${env.BUILD_URL}",
+                channel: channel
+            )
+        } else if (currentBuild.result == 'UNSTABLE') {
+            slackSend(
+                color: 'warning',
+                message: "Pantheon Plugins API branch ${env.BRANCH_NAME} build is UNSTABLE.\nBuild Number: #${env.BUILD_NUMBER}\n${env.BUILD_URL}",
+                channel: channel
+            )
+        }
+    }
 }
