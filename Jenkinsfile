@@ -64,7 +64,15 @@ try {
             }
             if (env.BRANCH_NAME != "master") {
               stage(stage_name + 'Bintray Upload') {
-                sh './gradlew --no-daemon --parallel bintrayUpload'
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'pegasys-bintray',
+                        usernameVariable: 'BINTRAY_USER',
+                        passwordVariable: 'BINTRAY_KEY'
+                    )
+                ]) {
+                  sh './gradlew --no-daemon --parallel bintrayUpload'
+                }
               }
             }
           } finally {
