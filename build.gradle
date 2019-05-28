@@ -58,9 +58,7 @@ spotless {
   }
 }
 
-jar {
-  dependsOn checkLicenses
-}
+jar { dependsOn checkLicenses }
 
 tasks.withType(JavaCompile) {
   options.compilerArgs += [

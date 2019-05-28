@@ -13,14 +13,13 @@
 package tech.pegasys.pantheon.plugin.services;
 
 /**
- * A service that plugins can use to add CLI options and commands to the PantheonCommand.  The
+ * A service that plugins can use to add CLI options and commands to the PantheonCommand. The
  * PicoCLI library annotations will be inspected and the object will be passed into a
  * picocli.CommandLine.addMixin call.
  *
  * <p>This service will be available during the registration callbacks.
  *
  * <p>CLI arguments should conform to the CLI-STYLE-GUIDE.md conventions.
- *
  */
 public interface PicoCLIOptions {
 
