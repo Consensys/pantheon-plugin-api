@@ -61,7 +61,7 @@ try {
             stage(stage_name + 'build') {
               sh './gradlew --no-daemon --parallel build'
             }
-            if (env.BRANCH_NAME == "master") {
+            if (env.BRANCH_NAME != "master") {
               stage(stage_name + 'Bintray Upload') {
                 withCredentials([
                     usernamePassword(
