@@ -48,17 +48,17 @@ if (env.BRANCH_NAME != "master") {
 }
 
 try {
-  parallel UnitTests: {
-    def stage_name = "Unit tests node: "
+  parallel Library: {
+    def stage_name = "Library node: "
     node {
       checkout scm
       docker.image(docker_image_dind).withRun('--privileged') { d ->
         docker.image(build_image).inside("--link ${d.id}:docker") {
           try {
             stage(stage_name + 'Prepare') {
-              sh './gradlew --no-daemon --parallel clean compileJava compileTestJava assemble'
+              sh './gradlew --no-daemon --parallel clean compileJava assemble'
             }
-            stage(stage_name + 'Unit tests') {
+            stage(stage_name + 'build') {
               sh './gradlew --no-daemon --parallel build'
             }
             if (env.BRANCH_NAME == "master") {
