@@ -22,7 +22,7 @@ if (env.BRANCH_NAME == "master") {
   ])
 }
 
-def docker_image = 'docker:18.06.0-ce'
+def docker_image_dind = 'docker:18.06.0-ce-dind'
 def build_image = 'pegasyseng/pantheon-build:0.0.5-jdk8'
 
 def abortPreviousBuilds() {
@@ -52,7 +52,7 @@ try {
     def stage_name = "Unit tests node: "
     node {
       checkout scm
-      docker.image(docker_image).withRun('--privileged') { d ->
+      docker.image(docker_image_dind).withRun('--privileged') { d ->
         docker.image(build_image).inside("--link ${d.id}:docker") {
           try {
             stage(stage_name + 'Prepare') {
