@@ -12,6 +12,8 @@
  */
 package tech.pegasys.pantheon.plugin.services;
 
+import tech.pegasys.pantheon.plugin.data.BlockHeader;
+
 /**
  * This service allows plugins to attach to various events durring the normal operation of Pantheon.
  *
@@ -42,6 +44,7 @@ public interface PantheonEvents {
   void removeNewBlockPropagatedListener(Object listenerIdentifier);
 
   interface NewBlockPropagatedListener {
-    void newBlockPropagated(String jsonBlock);
+    void newBlockPropagated(BlockHeader newBlockHeader);
+//    void newBlockPropagated(String newBlockHeader);
   }
 }
