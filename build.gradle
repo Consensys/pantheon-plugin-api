@@ -183,3 +183,6 @@ bintray {
     }
   }
 }
+
+afterReleaseBuild.dependsOn bintrayUpload
+bintrayUpload.mustRunAfter publishToMavenLocal
