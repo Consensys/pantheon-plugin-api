@@ -54,28 +54,24 @@ try {
       checkout scm
       docker.image(docker_image_dind).withRun('--privileged') { d ->
         docker.image(build_image).inside("--link ${d.id}:docker") {
-          try {
-            stage(stage_name + 'Prepare') {
-              sh './gradlew --no-daemon --parallel clean compileJava assemble'
-            }
-            stage(stage_name + 'build') {
-              sh './gradlew --no-daemon --parallel build'
-            }
-            if (env.BRANCH_NAME == "master") {
-              stage(stage_name + 'Bintray Upload') {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'pegasys-bintray',
-                        usernameVariable: 'BINTRAY_USER',
-                        passwordVariable: 'BINTRAY_KEY'
-                    )
-                ]) {
-                  sh './gradlew --no-daemon --parallel bintrayUpload'
-                }
+          stage(stage_name + 'Prepare') {
+            sh './gradlew --no-daemon --parallel clean compileJava assemble'
+          }
+          stage(stage_name + 'build') {
+            sh './gradlew --no-daemon --parallel build'
+          }
+          if (env.BRANCH_NAME == "master") {
+            stage(stage_name + 'Bintray Upload') {
+              withCredentials([
+                  usernamePassword(
+                      credentialsId: 'pegasys-bintray',
+                      usernameVariable: 'BINTRAY_USER',
+                      passwordVariable: 'BINTRAY_KEY'
+                  )
+              ]) {
+                sh './gradlew --no-daemon --parallel bintrayUpload'
               }
             }
-          } finally {
-            archiveArtifacts 'build/reports/**'
           }
         }
       }
