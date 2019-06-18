@@ -1,4 +1,4 @@
-package tech.pegasys.pantheon.plugin.data;
+package tech.pegasys.pantheon.api.data;
 
 public interface Hash extends UnformattedData {
 }

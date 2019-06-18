@@ -10,9 +10,9 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
-package tech.pegasys.pantheon.plugin.services;
+package tech.pegasys.pantheon.api.services;
 
-import tech.pegasys.pantheon.plugin.data.BlockHeader;
+import tech.pegasys.pantheon.api.data.BlockHeader;
 
 /**
  * This service allows plugins to attach to various events durring the normal operation of Pantheon.
@@ -45,6 +45,5 @@ public interface PantheonEvents {
 
   interface NewBlockPropagatedListener {
     void newBlockPropagated(BlockHeader newBlockHeader);
-//    void newBlockPropagated(String newBlockHeader);
   }
 }

@@ -58,7 +58,10 @@ spotless {
   }
 }
 
-jar { dependsOn checkLicenses }
+jar {
+  archiveBaseName = 'pantheon-api'
+  dependsOn checkLicenses
+}
 
 tasks.withType(JavaCompile) {
   options.compilerArgs += [
@@ -113,11 +116,13 @@ javadoc {
 
 task sourcesJar(type: Jar) {
   from sourceSets.main.allJava
+  archiveBaseName = 'pantheon-api'
   archiveClassifier = 'sources'
 }
 
 task javadocJar(type: Jar) {
   from javadoc
+  archiveBaseName = 'pantheon-api'
   archiveClassifier = 'javadoc'
 }
 
@@ -132,8 +137,9 @@ publishing {
         usage('java-runtime') { fromResolutionResult() }
       }
       pom {
-        name = 'Pantheon Plugins Library'
-        description = 'Core Plugins Libraries for Pantheon'
+        name = 'Pantheon API Library'
+        artifactId = 'api'
+        description = 'API for Pantheon'
         url = 'http://github.com/PegaSysEng/pantheon-plugin-api'
         licenses {
           license {
@@ -142,9 +148,9 @@ publishing {
           }
         }
         scm {
-          connection = 'scm:git:git://github.com/PegaSysEng/pantheon.git'
-          developerConnection = 'scm:git:ssh://github.com/PegaSysEng/pantheon.git'
-          url = 'https://github.com/PegaSysEng/pantheon'
+          connection = 'scm:git:git://github.com/PegaSysEng/pantheon-plugin-api.git'
+          developerConnection = 'scm:git:ssh://github.com/PegaSysEng/pantheon-plugin-api.git'
+          url = 'https://github.com/PegaSysEng/pantheon-plugin-api'
         }
       }
     }
