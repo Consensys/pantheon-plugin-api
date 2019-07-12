@@ -12,6 +12,9 @@
  */
 package tech.pegasys.pantheon.plugin.services;
 
+import tech.pegasys.pantheon.plugin.services.storage.KeyValueStorageFactory;
+import tech.pegasys.pantheon.plugin.services.storage.SegmentIdentifier;
+
 import java.util.List;
 
 public interface StorageService {

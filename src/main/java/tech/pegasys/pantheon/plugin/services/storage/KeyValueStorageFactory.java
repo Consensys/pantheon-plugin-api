@@ -10,12 +10,15 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
-package tech.pegasys.pantheon.plugin.services;
+package tech.pegasys.pantheon.plugin.services.storage;
 
 public interface KeyValueStorageFactory {
-  KeyValueStorage createKeyValueStorageForSegment(SegmentIdentifier segment);
 
   String getName();
+
+  KeyValueStorage createKeyValueStorage();
+
+  KeyValueStorage createKeyValueStorageForSegment(SegmentIdentifier segment);
 
   boolean supportsSegments();
 }
