@@ -35,6 +35,12 @@ public interface KeyValueStorage extends Closeable {
     Transaction startTransaction() throws StorageException;
 
     boolean hasSegmentationSupport();
+
+    // TODO segmentation stuff?
+
+    // TODO name
+
+    // TODO version (Pantheon data format supported)
   }
 
   interface Transaction {
