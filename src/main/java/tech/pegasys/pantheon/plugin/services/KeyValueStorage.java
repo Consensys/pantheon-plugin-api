@@ -33,8 +33,6 @@ public interface KeyValueStorage extends Closeable {
     long removeUnless(Predicate<byte[]> inUseCheck) throws StorageException;
 
     Transaction startTransaction() throws StorageException;
-
-    boolean hasSegmentationSupport();
   }
 
   interface Transaction {

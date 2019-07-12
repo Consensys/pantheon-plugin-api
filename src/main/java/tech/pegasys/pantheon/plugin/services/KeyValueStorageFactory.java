@@ -14,4 +14,8 @@ package tech.pegasys.pantheon.plugin.services;
 
 public interface KeyValueStorageFactory {
   KeyValueStorage createKeyValueStorageForSegment(SegmentIdentifier segment);
+
+  String getName();
+
+  boolean supportsSegments();
 }
