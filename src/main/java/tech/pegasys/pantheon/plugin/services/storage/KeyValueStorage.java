@@ -20,20 +20,13 @@ import java.util.function.Predicate;
 
 public interface KeyValueStorage extends Closeable {
 
-  Object addKeyValueStorageListener(KeyValueStorageListener listener);
+  void clear() throws StorageException;
 
-  void removeKeyValueStorageListener(Object identifier);
+  Optional<byte[]> get(byte[] key) throws StorageException;
 
-  interface KeyValueStorageListener {
+  long removeUnless(Predicate<byte[]> inUseCheck) throws StorageException;
 
-    void clear() throws StorageException;
-
-    Optional<byte[]> get(byte[] key) throws StorageException;
-
-    long removeUnless(Predicate<byte[]> inUseCheck) throws StorageException;
-
-    Transaction startTransaction() throws StorageException;
-  }
+  Transaction startTransaction() throws StorageException;
 
   interface Transaction {
 
