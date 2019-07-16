@@ -16,9 +16,7 @@ public interface KeyValueStorageFactory {
 
   String getName();
 
-  KeyValueStorage createKeyValueStorage();
-
   KeyValueStorage createKeyValueStorage(SegmentIdentifier segment);
 
-  boolean supportsSegments();
+  boolean isSegmentIsolationSupported();
 }
