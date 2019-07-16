@@ -18,7 +18,7 @@ public interface KeyValueStorageFactory {
 
   KeyValueStorage createKeyValueStorage();
 
-  KeyValueStorage createKeyValueStorageForSegment(SegmentIdentifier segment);
+  KeyValueStorage createKeyValueStorage(SegmentIdentifier segment);
 
   boolean supportsSegments();
 }
