@@ -12,4 +12,7 @@
  */
 package tech.pegasys.pantheon.plugin.services.storage;
 
-public interface SegmentIdentifier {}
+public interface SegmentIdentifier {
+
+  String getName();
+}
