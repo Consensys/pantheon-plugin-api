@@ -13,7 +13,7 @@
 package tech.pegasys.pantheon.plugin.services;
 
 /**
- * This service allows plugins to attach to various events durring the normal operation of Pantheon.
+ * This service allows plugins to attach to various events during the normal operation of Pantheon.
  *
  * <p>Currently supported events
  *
