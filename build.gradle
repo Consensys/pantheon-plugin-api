@@ -20,6 +20,8 @@ sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 group = 'tech.pegasys.pantheon'
 
+defaultTasks 'build', 'checkLicenses', 'javadoc'
+
 repositories {
   if ("$System.env.JENKINS_URL" == 'https://jenkins.pegasys.tech/') {
     maven { url "https://nexus.int.pegasys.tech/repository/consensys-pegasys/" }
@@ -142,9 +144,9 @@ publishing {
           }
         }
         scm {
-          connection = 'scm:git:git://github.com/PegaSysEng/pantheon.git'
-          developerConnection = 'scm:git:ssh://github.com/PegaSysEng/pantheon.git'
-          url = 'https://github.com/PegaSysEng/pantheon'
+          connection = 'scm:git:git://github.com/PegaSysEng/pantheon-plugin-api.git'
+          developerConnection = 'scm:git:ssh://github.com/PegaSysEng/pantheon-plugin-api.git'
+          url = 'https://github.com/PegaSysEng/pantheon-plugin-api'
         }
       }
     }
