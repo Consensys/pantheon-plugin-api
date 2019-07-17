@@ -41,6 +41,9 @@ public interface PantheonPlugin {
   /**
    * Called when the plugin is being stopped. This method will be called as part of Pantheon
    * shutting down but may also be called at other times to disable the plugin.
+   *
+   * <p>The plugin should remove any registered listeners and stop any background threads it
+   * started.
    */
   void stop();
 }
