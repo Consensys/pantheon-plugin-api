@@ -26,16 +26,5 @@ public interface KeyValueStorage extends Closeable {
 
   long removeUnless(Predicate<byte[]> inUseCheck) throws StorageException;
 
-  Transaction startTransaction() throws StorageException;
-
-  interface Transaction {
-
-    void put(byte[] key, byte[] value);
-
-    void remove(byte[] key);
-
-    void commit() throws StorageException;
-
-    void rollback();
-  }
+  KeyValueStorageTransaction startTransaction() throws StorageException;
 }
