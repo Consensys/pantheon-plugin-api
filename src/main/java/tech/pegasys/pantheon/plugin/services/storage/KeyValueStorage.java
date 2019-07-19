@@ -18,13 +18,40 @@ import java.io.Closeable;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+/** An instance responsible for storing values against keys. */
 public interface KeyValueStorage extends Closeable {
 
+  /**
+   * Deletes all keys and values from the storage.
+   *
+   * @throws StorageException problem encountered when attempting to clear storage.
+   */
   void clear() throws StorageException;
 
+  /**
+   * Retrieves the value associated with a given key.
+   *
+   * @param key whose associated value is being retrieved, never <code>null</code>.
+   * @return when the key is found, the associated value will be present.
+   * @throws StorageException problem encountered when attempting retrieval.
+   */
   Optional<byte[]> get(byte[] key) throws StorageException;
 
+  /**
+   * Perform an evaluation against each key in the store, keeping the entries that pass, removing
+   * those that fail.
+   *
+   * @param inUseCheck predicate to evaluate each key against, unless the result is <code>true
+   *     </code>, both the key and associated value must be removed, never <code>null</code>.
+   * @throws StorageException problem encountered when removing data.
+   */
   long removeUnless(Predicate<byte[]> inUseCheck) throws StorageException;
 
+  /**
+   * Begins a fresh transaction, for sequencing operations for later atomic execution.
+   *
+   * @return transaciton to order key-value operation in, never <code>null</code>.
+   * @throws StorageException problem encountered when starting a new transaction.
+   */
   KeyValueStorageTransaction startTransaction() throws StorageException;
 }
