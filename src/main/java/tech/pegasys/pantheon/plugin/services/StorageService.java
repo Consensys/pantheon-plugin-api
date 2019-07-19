@@ -23,10 +23,9 @@ public interface StorageService {
   /**
    * Registers a factory as available for creating key-value storage instances.
    *
-   * @param name storage identifier, used when selecting the appropriate storage service.
    * @param factory creates instances providing key-value storage.
    */
-  void registerKeyValueStorage(String name, KeyValueStorageFactory factory);
+  void registerKeyValueStorage(KeyValueStorageFactory factory);
 
   /**
    * Retrieves the identifiers for the isolation segments that could be requested during operation.
