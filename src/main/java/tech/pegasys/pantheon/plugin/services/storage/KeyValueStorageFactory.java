@@ -12,11 +12,30 @@
  */
 package tech.pegasys.pantheon.plugin.services.storage;
 
+/** Factory for creating key-value storage instances. */
 public interface KeyValueStorageFactory {
 
+  /**
+   * Retrieves the identity of the key-value storage factory.
+   *
+   * @return the storage identifier, used when selecting the appropriate storage service.
+   */
   String getName();
 
-  KeyValueStorage createKeyValueStorage(SegmentIdentifier segment);
+  /**
+   * Creates a new key-value storage instance, appropriate for the given segment.
+   *
+   * @param segment identity of the isolation segment, an identifier for the data set the storage
+   *     will contain.
+   * @return the storage instance reserved for the given segment, never <code>null</code>.
+   */
+  KeyValueStorage create(SegmentIdentifier segment);
 
+  /**
+   * Whether storage segment isolation is supported by the factory created instances.
+   *
+   * @return <code>true</code> when the created storage instances are isolated from each other,
+   *     <code>false</code> when keys of different segments can collide with each other.
+   */
   boolean isSegmentIsolationSupported();
 }
