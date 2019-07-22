@@ -31,7 +31,7 @@ public interface KeyValueStorage extends Closeable {
   /**
    * Retrieves the value associated with a given key.
    *
-   * @param key whose associated value is being retrieved, never <code>null</code>.
+   * @param key whose associated value is being retrieved, never {@code null}.
    * @return when the given key is found, the associated value will be present.
    * @throws StorageException problem encountered during the retrieval attempt.
    */
@@ -41,8 +41,8 @@ public interface KeyValueStorage extends Closeable {
    * Performs an evaluation against each key in the store, keeping the entries that pass, removing
    * those that fail.
    *
-   * @param inUseCheck predicate to evaluate each key against, unless the result is <code>true
-   *     </code>, both the key and associated value must be removed, never <code>null</code>.
+   * @param inUseCheck predicate to evaluate each key against, unless the result is {@code null},
+   *     both the key and associated value must be removed, never {@code null}.
    * @throws StorageException problem encountered when removing data.
    */
   long removeKeyUnless(Predicate<byte[]> inUseCheck) throws StorageException;
@@ -50,7 +50,7 @@ public interface KeyValueStorage extends Closeable {
   /**
    * Begins a fresh transaction, for sequencing operations for later atomic execution.
    *
-   * @return transaciton to order key-value operation in, never <code>null</code>.
+   * @return transaciton to order key-value operation in, never {@code null}.
    * @throws StorageException problem encountered when starting a new transaction.
    */
   KeyValueStorageTransaction startTransaction() throws StorageException;

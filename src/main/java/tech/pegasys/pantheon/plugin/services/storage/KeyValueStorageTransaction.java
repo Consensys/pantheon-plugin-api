@@ -23,15 +23,15 @@ public interface KeyValueStorageTransaction {
    * <p>If a previously value had been store against the given key, the old value is replaced by the
    * given value.
    *
-   * @param key the given value is to be associated with, never <code>null</code>.
-   * @param value associated with the specified key, never <code>null</code>.
+   * @param key the given value is to be associated with, never {@code null}.
+   * @param value associated with the specified key, never {@code null}.
    */
   void put(byte[] key, byte[] value);
 
   /**
    * When the given key is present, the key and mapped value will be removed from storage.
    *
-   * @param key the key and mapped value that will be removed, never <code>null</code>.
+   * @param key the key and mapped value that will be removed, never {@code null}.
    */
   void remove(byte[] key);
 

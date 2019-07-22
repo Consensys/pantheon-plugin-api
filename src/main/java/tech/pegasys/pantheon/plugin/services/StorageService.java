@@ -30,8 +30,7 @@ public interface StorageService {
   /**
    * Retrieves the identifiers for the isolation segments that could be requested during operation.
    *
-   * @return full set of possible segments required from the storage service, never <code>null
-   *     </code>.
+   * @return full set of possible segments required from the storage service, never {@code null}.
    */
   List<SegmentIdentifier> getAllSegmentIdentifiers();
 }

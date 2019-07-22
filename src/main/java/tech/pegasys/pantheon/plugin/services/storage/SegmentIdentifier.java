@@ -21,7 +21,7 @@ public interface SegmentIdentifier {
   /**
    * Identifier for the segment.
    *
-   * @return unique name of the segment, never <code>null</code>.
+   * @return unique name of the segment, never {@code null}.
    */
   String getName();
 }
