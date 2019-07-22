@@ -38,14 +38,14 @@ public interface KeyValueStorage extends Closeable {
   Optional<byte[]> get(byte[] key) throws StorageException;
 
   /**
-   * Perform an evaluation against each key in the store, keeping the entries that pass, removing
+   * Performs an evaluation against each key in the store, keeping the entries that pass, removing
    * those that fail.
    *
    * @param inUseCheck predicate to evaluate each key against, unless the result is <code>true
    *     </code>, both the key and associated value must be removed, never <code>null</code>.
    * @throws StorageException problem encountered when removing data.
    */
-  long removeUnless(Predicate<byte[]> inUseCheck) throws StorageException;
+  long removeKeyUnless(Predicate<byte[]> inUseCheck) throws StorageException;
 
   /**
    * Begins a fresh transaction, for sequencing operations for later atomic execution.
