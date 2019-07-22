@@ -12,7 +12,15 @@
  */
 package tech.pegasys.pantheon.plugin.services;
 
+import java.nio.file.Path;
+
+/** Generally useful configuration provided by Pantheon. */
 public interface PantheonConfiguration {
 
-  String getStoragePath();
+  /**
+   * Location of the working directory of the storage in the file system running the client.
+   *
+   * @return location of the storage in the file system of the client.
+   */
+  Path getStoragePath();
 }
