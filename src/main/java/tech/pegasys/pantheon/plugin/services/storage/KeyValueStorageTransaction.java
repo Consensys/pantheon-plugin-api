@@ -14,7 +14,7 @@ package tech.pegasys.pantheon.plugin.services.storage;
 
 import tech.pegasys.pantheon.plugin.services.exception.StorageException;
 
-/** a transaction that can atomically commit a sequence of operations to a key-value store. */
+/** A transaction that can atomically commit a sequence of operations to a key-value store. */
 public interface KeyValueStorageTransaction {
 
   /**
@@ -36,7 +36,7 @@ public interface KeyValueStorageTransaction {
   void remove(byte[] key);
 
   /**
-   * Atomic commit of all the operations queued in the transaction.
+   * Performs an atomic commit of all the operations queued in the transaction.
    *
    * @throws StorageException problem was encountered preventing the commit
    */

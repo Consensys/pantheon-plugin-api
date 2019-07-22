@@ -18,7 +18,7 @@ import java.io.Closeable;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-/** An instance responsible for storing values against keys. */
+/** Responsible for storing values against keys. */
 public interface KeyValueStorage extends Closeable {
 
   /**
@@ -32,8 +32,8 @@ public interface KeyValueStorage extends Closeable {
    * Retrieves the value associated with a given key.
    *
    * @param key whose associated value is being retrieved, never <code>null</code>.
-   * @return when the key is found, the associated value will be present.
-   * @throws StorageException problem encountered when attempting retrieval.
+   * @return when the given key is found, the associated value will be present.
+   * @throws StorageException problem encountered during the retrieval attempt.
    */
   Optional<byte[]> get(byte[] key) throws StorageException;
 

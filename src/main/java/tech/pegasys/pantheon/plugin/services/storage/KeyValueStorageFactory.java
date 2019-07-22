@@ -26,7 +26,7 @@ public interface KeyValueStorageFactory {
    * Creates a new key-value storage instance, appropriate for the given segment.
    *
    * <p>When segment isolation is not supported, the create will still be called with each of the
-   * required segments, where the same instance should be returned.
+   * required segments, where the same storage instance should be returned.
    *
    * @param segment identity of the isolation segment, an identifier for the data set the storage
    *     will contain.
