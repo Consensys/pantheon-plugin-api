@@ -28,6 +28,10 @@ public interface KeyValueStorageFactory {
    * <p>When segment isolation is not supported, the create will still be called with each of the
    * required segments, where the same storage instance should be returned.
    *
+   * <p>New segments may be introduced in future releases and should result in a new empty
+   * key-space. Segments created with the identifier of an existing segment should have the same
+   * data as that existing segment.
+   *
    * @param segment identity of the isolation segment, an identifier for the data set the storage
    *     will contain.
    * @return the storage instance reserved for the given segment.
