@@ -13,8 +13,8 @@
 package tech.pegasys.pantheon.plugin.services.storage;
 
 /**
- * Identifier for the storage instance segment, a grouping of data that should be kept isolated from
- * the data of other segments.
+ * A namespace identifier for the storage instance segment, a grouping of data that should be kept
+ * isolated from the data of other segments.
  */
 public interface SegmentIdentifier {
 
