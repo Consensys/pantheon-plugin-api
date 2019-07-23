@@ -17,7 +17,7 @@ import tech.pegasys.pantheon.plugin.services.storage.SegmentIdentifier;
 
 import java.util.List;
 
-/** This service allows plugins to register as ab available storage engine. */
+/** This service allows plugins to register as an available storage engine. */
 public interface StorageService {
 
   /**
