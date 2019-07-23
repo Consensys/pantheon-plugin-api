@@ -18,7 +18,12 @@ import java.io.Closeable;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-/** Responsible for storing values against keys. */
+/**
+ * Responsible for storing values against keys.
+ *
+ * <p>Behaviour expected with regard to key to value mapping is that of a map, one key maps to one
+ * value, when a new value is added with an existing key, that key now points at the new value.
+ */
 public interface KeyValueStorage extends Closeable {
 
   /**
