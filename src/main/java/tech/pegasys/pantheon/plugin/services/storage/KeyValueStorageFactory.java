@@ -30,7 +30,7 @@ public interface KeyValueStorageFactory {
    *
    * @param segment identity of the isolation segment, an identifier for the data set the storage
    *     will contain.
-   * @return the storage instance reserved for the given segment, never <code>null</code>.
+   * @return the storage instance reserved for the given segment.
    */
   KeyValueStorage create(SegmentIdentifier segment);
 
