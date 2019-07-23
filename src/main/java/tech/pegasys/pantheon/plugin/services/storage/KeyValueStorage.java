@@ -49,7 +49,6 @@ public interface KeyValueStorage extends Closeable {
    *
    * @param retainCondition predicate to evaluate each key against, unless the result is {@code
    *     null}, both the key and associated value must be removed.
-   * @return the number of keys removed.
    * @throws StorageException problem encountered when removing data.
    */
   long removeAllKeysUnless(Predicate<byte[]> retainCondition) throws StorageException;
