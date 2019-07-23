@@ -45,7 +45,7 @@ public interface KeyValueStorage extends Closeable {
    *     both the key and associated value must be removed, never {@code null}.
    * @throws StorageException problem encountered when removing data.
    */
-  long removeKeyUnless(Predicate<byte[]> inUseCheck) throws StorageException;
+  long removeAllKeysUnless(Predicate<byte[]> inUseCheck) throws StorageException;
 
   /**
    * Begins a fresh transaction, for sequencing operations for later atomic execution.
