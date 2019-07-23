@@ -58,7 +58,7 @@ try {
             sh './gradlew --no-daemon --parallel clean compileJava assemble'
           }
           stage(stage_name + 'build') {
-            sh './gradlew --no-daemon --parallel build'
+            sh './gradlew --no-daemon --parallel'
           }
           if (env.BRANCH_NAME == "master") {
             stage(stage_name + 'Bintray Upload') {
