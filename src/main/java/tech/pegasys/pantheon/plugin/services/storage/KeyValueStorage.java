@@ -32,7 +32,7 @@ public interface KeyValueStorage extends Closeable {
    * Retrieves the value associated with a given key.
    *
    * @param key whose associated value is being retrieved, never {@code null}.
-   * @return when the given key is found, the associated value will be present.
+   * @return an {@link Optional} containing the value associated with the specified key, otherwise empty.
    * @throws StorageException problem encountered during the retrieval attempt.
    */
   Optional<byte[]> get(byte[] key) throws StorageException;
