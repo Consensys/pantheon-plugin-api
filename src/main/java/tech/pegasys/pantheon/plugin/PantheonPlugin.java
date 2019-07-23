@@ -12,11 +12,42 @@
  */
 package tech.pegasys.pantheon.plugin;
 
+/**
+ * Base interface for Pantheon plugins.
+ *
+ * <p>Plugins are discovered and loaded using {@link java.util.ServiceLoader} from jar files within
+ * Pantheon's plugin directory. See the {@link java.util.ServiceLoader} documentation for how to
+ * register plugins.
+ */
 public interface PantheonPlugin {
 
+  /**
+   * Called when the plugin is first registered with Pantheon. Plugins are registered very early in
+   * the Pantheon life-cycle and should use this callback to register any command line options
+   * required via the {@link tech.pegasys.pantheon.plugin.services.PicoCLIOptions} service.
+   *
+   * <p>The <code>context</code> parameter should be stored in a field in the plugin. This is the
+   * only time it will be provided to the plugin and is how the plugin will interact with Pantheon.
+   *
+   * <p>Typically the plugin will not begin operation until the {@link #start()} method is called.
+   *
+   * @param context the context that provides access to Pantheon services.
+   */
   void register(PantheonContext context);
 
+  /**
+   * Called once Pantheon has loaded configuration and is starting up. The plugin should begin
+   * operation, including registering any event listener with Pantheon services and starting any
+   * background threads the plugin requires.
+   */
   void start();
 
+  /**
+   * Called when the plugin is being stopped. This method will be called as part of Pantheon
+   * shutting down but may also be called at other times to disable the plugin.
+   *
+   * <p>The plugin should remove any registered listeners and stop any background threads it
+   * started.
+   */
   void stop();
 }
