@@ -13,12 +13,12 @@
 package tech.pegasys.pantheon.plugin.services;
 
 /**
- * This service allows plugins to attach to various events durring the normal operation of Pantheon.
+ * This service allows plugins to attach to various events during the normal operation of Pantheon.
  *
  * <p>Currently supported events
  *
  * <ul>
- *   <li><b>newBlockPropagated</b> - Fired when a new block header has been recieved and validated
+ *   <li><b>newBlockPropagated</b> - Fired when a new block header has been received and validated
  *       and is about to be sent out to other peers, but before the body of the block has been
  *       evaluated and validated.
  * </ul>
@@ -41,7 +41,18 @@ public interface PantheonEvents {
    */
   void removeNewBlockPropagatedListener(Object listenerIdentifier);
 
+  /** The listener interface for receiving new block propagated events. */
   interface NewBlockPropagatedListener {
+
+    /**
+     * Invoked when a new block header has been received and validated and is about to be sent out
+     * to other peers, but before the body of the block has been evaluated and validated.
+     *
+     * <p>The block may not have been imported to the local chain yet and may fail later
+     * validations.
+     *
+     * @param jsonBlock the JSON serialisation of the block.
+     */
     void newBlockPropagated(String jsonBlock);
   }
 }
