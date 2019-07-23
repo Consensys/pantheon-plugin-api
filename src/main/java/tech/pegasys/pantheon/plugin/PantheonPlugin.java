@@ -13,7 +13,7 @@
 package tech.pegasys.pantheon.plugin;
 
 /**
- * Base interface that Pantheon plugins should implement.
+ * Base interface for Pantheon plugins.
  *
  * <p>Plugins are discovered and loaded using {@link java.util.ServiceLoader} from jar files within
  * Pantheon's plugin directory.
