@@ -28,7 +28,7 @@ public interface PantheonPlugin {
    * <p>The <code>context</code> parameter should be stored in a field in the plugin. This is the 
    * only time it will be provided to the plugin and is how the plugin will interact with Pantheon.
    *
-   * <p>The plugin should not begin operation until the {@link #start()} method is called.
+   * <p>Typically the plugin will not begin operation until the {@link #start()} method is called.
    *
    * @param context the context that provides access to Pantheon services.
    */
