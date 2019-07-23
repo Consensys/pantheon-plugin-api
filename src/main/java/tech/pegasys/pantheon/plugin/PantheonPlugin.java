@@ -25,7 +25,7 @@ public interface PantheonPlugin {
    * the Pantheon life-cycle and should use this callback to register any command line options
    * required via the {@link tech.pegasys.pantheon.plugin.services.PicoCLIOptions} service.
    *
-   * <p>The <code>context</code> parameter should be stored in a field in the plugin. This is the 
+   * <p>The <code>context</code> parameter should be stored in a field in the plugin. This is the
    * only time it will be provided to the plugin and is how the plugin will interact with Pantheon.
    *
    * <p>Typically the plugin will not begin operation until the {@link #start()} method is called.
