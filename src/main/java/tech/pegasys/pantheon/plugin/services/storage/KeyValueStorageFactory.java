@@ -37,6 +37,10 @@ public interface KeyValueStorageFactory {
   /**
    * Whether storage segment isolation is supported by the factory created instances.
    *
+   * <p>As supporting segment isolation is similar to a separating keys into distinct namespaces,
+   * where operations only affect within that segment i.e. the same key from two segments point to
+   * separate values.
+   *
    * @return <code>true</code> when the created storage instances are isolated from each other,
    *     <code>false</code> when keys of different segments can collide with each other.
    */
