@@ -19,7 +19,7 @@ package tech.pegasys.pantheon.plugin.services.storage;
 public interface SegmentIdentifier {
 
   /**
-   * Identifier for the segment.
+   * Identifier for the segment consistent throughout the lifetime of the segment.
    *
    * @return unique name of the segment.
    */
