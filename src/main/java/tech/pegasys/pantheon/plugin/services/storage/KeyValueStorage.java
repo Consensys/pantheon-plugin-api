@@ -42,11 +42,11 @@ public interface KeyValueStorage extends Closeable {
    * Performs an evaluation against each key in the store, keeping the entries that pass, removing
    * those that fail.
    *
-   * @param inUseCheck predicate to evaluate each key against, unless the result is {@code null},
-   *     both the key and associated value must be removed, never {@code null}.
+   * @param retainCondition predicate to evaluate each key against, unless the result is {@code
+   *     null}, both the key and associated value must be removed, never {@code null}.
    * @throws StorageException problem encountered when removing data.
    */
-  long removeAllKeysUnless(Predicate<byte[]> inUseCheck) throws StorageException;
+  long removeAllKeysUnless(Predicate<byte[]> retainCondition) throws StorageException;
 
   /**
    * Begins a fresh transaction, for sequencing operations for later atomic execution.
