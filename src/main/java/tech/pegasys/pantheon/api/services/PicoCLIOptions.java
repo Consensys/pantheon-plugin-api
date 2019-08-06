@@ -19,7 +19,9 @@ package tech.pegasys.pantheon.api.services;
  *
  * <p>This service will be available during the registration callbacks.
  *
- * <p>CLI arguments should conform to the CLI-STYLE-GUIDE.md conventions.
+ * <p>CLI arguments should conform to the <a
+ * href="https://github.com/PegaSysEng/pantheon/blob/master/CLI-STYLE-GUIDE.md">CLI-STYLE-GUIDE.md</a>
+ * conventions.
  */
 public interface PicoCLIOptions {
 

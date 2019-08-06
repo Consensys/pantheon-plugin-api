@@ -23,7 +23,7 @@ if (env.BRANCH_NAME == "master") {
 }
 
 def docker_image_dind = 'docker:18.06.0-ce-dind'
-def build_image = 'pegasyseng/pantheon-build:0.0.5-jdk8'
+def build_image = 'pegasyseng/pantheon-build:0.0.7-jdk11'
 
 def abortPreviousBuilds() {
   Run previousBuild = currentBuild.rawBuild.getPreviousBuildInProgress()
@@ -58,7 +58,7 @@ try {
             sh './gradlew --no-daemon --parallel clean compileJava assemble'
           }
           stage(stage_name + 'build') {
-            sh './gradlew --no-daemon --parallel build'
+            sh './gradlew --no-daemon --parallel'
           }
           if (env.BRANCH_NAME == "master") {
             stage(stage_name + 'Bintray Upload') {
