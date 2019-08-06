@@ -13,8 +13,8 @@
 package tech.pegasys.pantheon.api.data;
 
 /**
- * An interface to mark the {@link BinaryData} that also represents a disceete quantity, such as
- * an unsigned integer value.
+ * An interface to mark the {@link BinaryData} that also represents a disceete quantity, such as an
+ * unsigned integer value.
  */
 public interface Quantity extends BinaryData {
 

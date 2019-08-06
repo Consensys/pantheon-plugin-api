@@ -12,7 +12,5 @@
  */
 package tech.pegasys.pantheon.api.data;
 
-/**
- * An interface to mark BinaryData that is not a scalar {@link Quantity}.
- */
+/** An interface to mark BinaryData that is not a scalar {@link Quantity}. */
 public interface UnformattedData extends BinaryData {}
