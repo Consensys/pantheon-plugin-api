@@ -19,15 +19,25 @@ public interface BinaryData {
    * The byte level representation of the binary data. This array should be treated as read only
    * constant data as any changes will not be reflected in the source.
    *
-   * @return a read-only array of the bytes fo the binary data.
+   * @return a read-only array of the bytes of the binary data.
    */
   byte[] getByteArray();
 
   /**
    * A hex string representation of the data. This hex string will represent the hex of the entire
-   * binary data. APIs that depend on shortend forms will need to process the string.
+   * binary data and will be "<code>0x</code>" prefixed. APIs that depend on shortend forms will
+   * need to process the string.
    *
    * @return A string repsenting the hex encodeing of the data.
    */
   String getHexString();
+
+  /**
+   * The size, in bytes, of the contained binary data. Because {@link #getByteArray()} may cause the
+   * underlying data to be copied using this size method is preferred when such a check would avoid
+   * a call to {@link #getByteArray()} or {@link #getHexString()}.
+   *
+   * @return The length of the binary data in bytes.
+   */
+  int size();
 }
