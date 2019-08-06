@@ -20,7 +20,9 @@ package tech.pegasys.pantheon.plugin.services;
  * <ul>
  *   <li><b>newBlockPropagated</b> - Fired when a new block header has been received and validated
  *       and is about to be sent out to other peers, but before the body of the block has been
- *       evaluated and validated.
+ *       evaluated and validated
+ *   <li><b>onPendingTransactionAdded</b> - Fired when a when a pending transaction has been added
+ *       to the transaction pool for the node
  * </ul>
  */
 public interface PantheonEvents {
@@ -41,6 +43,19 @@ public interface PantheonEvents {
    */
   void removeNewBlockPropagatedListener(Object listenerIdentifier);
 
+  /**
+   * @param pendingTransactionsListener The listener that will accept a JSON string as the event.
+   * @return an object to be used as an identifier when de-registering the event.
+   */
+  Object addPendingTransactionListener(PendingTransactionsListener pendingTransactionsListener);
+
+  /**
+   * Remove the pendingTransaction listener from pantheon notifications.
+   *
+   * @param listenerIdentifier The instance that was returned from addPendingTransactionListener;
+   */
+  void removePendingTransactionListener(Object listenerIdentifier);
+
   /** The listener interface for receiving new block propagated events. */
   interface NewBlockPropagatedListener {
 
@@ -54,5 +69,16 @@ public interface PantheonEvents {
      * @param jsonBlock the JSON serialisation of the block.
      */
     void newBlockPropagated(String jsonBlock);
+  }
+
+  /** The listener interface for receiving pending transaction added events. */
+  interface PendingTransactionsListener {
+
+    /**
+     * Invoked when a pending transaction has been added to the transaction pool for the node.
+     *
+     * @param jsonTransaction the JSON serialisation of the transaction.
+     */
+    void onPendingTransactionAdded(String jsonTransaction);
   }
 }
