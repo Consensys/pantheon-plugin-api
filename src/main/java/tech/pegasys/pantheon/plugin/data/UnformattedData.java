@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
-package tech.pegasys.pantheon.api.data;
+package tech.pegasys.pantheon.plugin.data;
 
-/** An interface for {@link BinaryData} that also represents an Ethereum account address. */
-public interface Address extends UnformattedData {}
+/** An interface to mark BinaryData that is not a scalar {@link Quantity}. */
+public interface UnformattedData extends BinaryData {}
