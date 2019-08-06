@@ -12,9 +12,22 @@
  */
 package tech.pegasys.pantheon.api.data;
 
+/** Super class for all types that are ultimately represented by binary data. */
 public interface BinaryData {
 
+  /**
+   * The byte level representation of the binary data. This array should be treated as read only
+   * constant data as any changes will not be reflected in the source.
+   *
+   * @return a read-only array of the bytes fo the binary data.
+   */
   byte[] getByteArray();
 
+  /**
+   * A hex string representation of the data. This hex string will represent the hex of the entire
+   * binary data. APIs that depend on shortend forms will need to process the string.
+   *
+   * @return A string repsenting the hex encodeing of the data.
+   */
   String getHexString();
 }

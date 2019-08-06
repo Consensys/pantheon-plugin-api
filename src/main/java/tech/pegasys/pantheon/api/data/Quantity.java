@@ -12,7 +12,21 @@
  */
 package tech.pegasys.pantheon.api.data;
 
+/**
+ * An interface to mark the {@link BinaryData} that also represents a disceete quantity, such as
+ * an unsigned integer value.
+ */
 public interface Quantity extends BinaryData {
 
+  /**
+   * Returns the numeric value of the quantity.
+   *
+   * <p>The specific class returned may be the boxed Java primitives, however plugin authors should
+   * not rely on the underlying number always being castable to that primitive in all cases and
+   * should instead rely on APIs such as {@link Number#longValue()} to cast to primitive values.
+   * Similarly the underlying object based values may evolve over time.
+   *
+   * @return The boxed or object based value of the quantity.
+   */
   Number getValue();
 }

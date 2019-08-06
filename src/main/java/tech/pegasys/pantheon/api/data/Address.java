@@ -12,4 +12,7 @@
  */
 package tech.pegasys.pantheon.api.data;
 
+/**
+ * An interface for {@link BinaryData} that also represents an Ethereum account address.
+ */
 public interface Address extends UnformattedData {}

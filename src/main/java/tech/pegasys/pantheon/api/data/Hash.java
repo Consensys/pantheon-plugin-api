@@ -12,4 +12,9 @@
  */
 package tech.pegasys.pantheon.api.data;
 
+/**
+ * A marker interface indicating that this {@link UnformattedData} represents a hash of some sort.
+ * The particular algorithm depends on the source, it may be ripemd, keccak, or some other
+ * algorithm.
+ */
 public interface Hash extends UnformattedData {}
