@@ -24,7 +24,7 @@ public interface PantheonPlugin {
   /**
    * Called when the plugin is first registered with Pantheon. Plugins are registered very early in
    * the Pantheon life-cycle and should use this callback to register any command line options
-   * required via the {@link tech.pegasys.pantheon.plugin.services.PicoCLIOptions} service.
+   * required via the PicoCLIOptions service.
    *
    * <p>The <code>context</code> parameter should be stored in a field in the plugin. This is the
    * only time it will be provided to the plugin and is how the plugin will interact with Pantheon.

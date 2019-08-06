@@ -12,6 +12,8 @@
  */
 package tech.pegasys.pantheon.plugin.services;
 
+import tech.pegasys.pantheon.plugin.data.BlockHeader;
+
 /**
  * This service allows plugins to attach to various events during the normal operation of Pantheon.
  *
@@ -51,8 +53,8 @@ public interface PantheonEvents {
      * <p>The block may not have been imported to the local chain yet and may fail later
      * validations.
      *
-     * @param jsonBlock the JSON serialisation of the block.
+     * @param newBlockHeader the new block header.
      */
-    void newBlockPropagated(String jsonBlock);
+    void newBlockPropagated(BlockHeader newBlockHeader);
   }
 }
