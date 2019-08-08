@@ -13,6 +13,7 @@
 package tech.pegasys.pantheon.plugin.services;
 
 import tech.pegasys.pantheon.plugin.data.BlockHeader;
+import tech.pegasys.pantheon.plugin.data.Transaction;
 
 /**
  * This service allows plugins to attach to various events during the normal operation of Pantheon.
@@ -23,18 +24,18 @@ import tech.pegasys.pantheon.plugin.data.BlockHeader;
  *   <li><b>newBlockPropagated</b> - Fired when a new block header has been received and validated
  *       and is about to be sent out to other peers, but before the body of the block has been
  *       evaluated and validated.
+ *   <li><b>newTransactionAdded</b> - Fired when a new transaction has been added to the node.
  * </ul>
  */
 public interface PantheonEvents {
 
   /**
-   * Returns the raw RLP of a block that Pantheon has received and that has passed basic validation
-   * checks.
+   * Add a listener watching new blocks propagated.
    *
-   * @param blockJSONListener The listener that will accept a JSON string as the event.
+   * @param newBlockPropagatedListener The listener that will accept a BlockHeader as the event.
    * @return an object to be used as an identifier when de-registering the event.
    */
-  Object addNewBlockPropagatedListener(NewBlockPropagatedListener blockJSONListener);
+  Object addNewBlockPropagatedListener(NewBlockPropagatedListener newBlockPropagatedListener);
 
   /**
    * Remove the blockAdded listener from pantheon notifications.
@@ -42,6 +43,22 @@ public interface PantheonEvents {
    * @param listenerIdentifier The instance that was returned from addBlockAddedListener;
    */
   void removeNewBlockPropagatedListener(Object listenerIdentifier);
+
+  /**
+   * Add a listener watching new transactions added to the node.
+   *
+   * @param newTransactionAddedListener The listener that will accept Transaction object as the
+   *     event.
+   * @return an object to be used as an identifier when de-registering the event.
+   */
+  Object addNewTransactionAddedListener(NewTransactionAddedListener newTransactionAddedListener);
+
+  /**
+   * Remove the blockAdded listener from pantheon notifications.
+   *
+   * @param listenerIdentifier The instance that was returned from addNewTransactionAddedListener;
+   */
+  void removeNewTransactionAddedListener(Object listenerIdentifier);
 
   /** The listener interface for receiving new block propagated events. */
   interface NewBlockPropagatedListener {
@@ -56,5 +73,16 @@ public interface PantheonEvents {
      * @param newBlockHeader the new block header.
      */
     void newBlockPropagated(BlockHeader newBlockHeader);
+  }
+
+  /** The listener interface for receiving new transaction added events. */
+  interface NewTransactionAddedListener {
+
+    /**
+     * Invoked when a new transaction has been added to the node.
+     *
+     * @param transaction the new transaction.
+     */
+    void newTransactionAdded(Transaction transaction);
   }
 }
