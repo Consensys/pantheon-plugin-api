@@ -2,4 +2,4 @@
 
 ## 1.1.1
 
-Internal release.  Not for public use.
+Initial release. APIs are not yet considered stable and may change or be removed without warning.
