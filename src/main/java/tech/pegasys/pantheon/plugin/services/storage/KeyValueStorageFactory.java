@@ -12,6 +12,8 @@
  */
 package tech.pegasys.pantheon.plugin.services.storage;
 
+import tech.pegasys.pantheon.plugin.services.exception.StorageException;
+
 /** Factory for creating key-value storage instances. */
 public interface KeyValueStorageFactory {
 
@@ -35,8 +37,9 @@ public interface KeyValueStorageFactory {
    * @param segment identity of the isolation segment, an identifier for the data set the storage
    *     will contain.
    * @return the storage instance reserved for the given segment.
+   * @exception StorageException problem encountered when creating storage for the segment.
    */
-  KeyValueStorage create(SegmentIdentifier segment);
+  KeyValueStorage create(SegmentIdentifier segment) throws StorageException;
 
   /**
    * Whether storage segment isolation is supported by the factory created instances.
