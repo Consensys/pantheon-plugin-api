@@ -34,6 +34,16 @@ public interface KeyValueStorage extends Closeable {
   void clear() throws StorageException;
 
   /**
+   * Whether the key-value storage contains the given key.
+   *
+   * @param key a key that might be contained in the key-value storage.
+   * @return <code>true</code> when the given key is present in keyset, <code>false</code>
+   *     otherwise.
+   * @throws StorageException problem encountered when interacting with the key set.
+   */
+  boolean containsKey(byte[] key) throws StorageException;
+
+  /**
    * Retrieves the value associated with a given key.
    *
    * @param key whose associated value is being retrieved.
