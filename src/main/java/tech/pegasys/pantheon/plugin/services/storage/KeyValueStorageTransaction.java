@@ -23,7 +23,7 @@ public interface KeyValueStorageTransaction {
    * <p>If a previously value had been store against the given key, the old value is replaced by the
    * given value.
    *
-   * @param key the given value is to be associated with, never <code>null</code>.
+   * @param key the given value is to be associated with.
    * @param value associated with the specified key.
    */
   void put(byte[] key, byte[] value);
