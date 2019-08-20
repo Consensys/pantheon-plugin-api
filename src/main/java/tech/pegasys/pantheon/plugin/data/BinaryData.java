@@ -12,7 +12,10 @@
  */
 package tech.pegasys.pantheon.plugin.data;
 
+import tech.pegasys.pantheon.plugin.Unstable;
+
 /** Super class for all types that are ultimately represented by binary data. */
+@Unstable
 public interface BinaryData {
 
   /**

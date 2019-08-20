@@ -12,12 +12,14 @@
  */
 package tech.pegasys.pantheon.plugin.services;
 
+import tech.pegasys.pantheon.plugin.Unstable;
 import tech.pegasys.pantheon.plugin.services.storage.KeyValueStorageFactory;
 import tech.pegasys.pantheon.plugin.services.storage.SegmentIdentifier;
 
 import java.util.List;
 
 /** This service allows plugins to register as an available storage engine. */
+@Unstable
 public interface StorageService {
 
   /**

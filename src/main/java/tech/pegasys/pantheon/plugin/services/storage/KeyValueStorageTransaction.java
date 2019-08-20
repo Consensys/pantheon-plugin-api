@@ -12,9 +12,11 @@
  */
 package tech.pegasys.pantheon.plugin.services.storage;
 
+import tech.pegasys.pantheon.plugin.Unstable;
 import tech.pegasys.pantheon.plugin.services.exception.StorageException;
 
 /** A transaction that can atomically commit a sequence of operations to a key-value store. */
+@Unstable
 public interface KeyValueStorageTransaction {
 
   /**

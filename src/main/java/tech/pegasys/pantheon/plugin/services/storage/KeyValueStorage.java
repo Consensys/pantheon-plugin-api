@@ -12,6 +12,7 @@
  */
 package tech.pegasys.pantheon.plugin.services.storage;
 
+import tech.pegasys.pantheon.plugin.Unstable;
 import tech.pegasys.pantheon.plugin.services.exception.StorageException;
 
 import java.io.Closeable;
@@ -26,6 +27,7 @@ import java.util.function.Predicate;
  *
  * <p>All keys and values must be non-null.
  */
+@Unstable
 public interface KeyValueStorage extends Closeable {
 
   /**

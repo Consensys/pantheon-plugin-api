@@ -12,5 +12,8 @@
  */
 package tech.pegasys.pantheon.plugin.data;
 
+import tech.pegasys.pantheon.plugin.Unstable;
+
 /** An interface for {@link BinaryData} that also represents an Ethereum account address. */
+@Unstable
 public interface Address extends UnformattedData {}

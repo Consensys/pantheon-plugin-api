@@ -12,9 +12,12 @@
  */
 package tech.pegasys.pantheon.plugin.data;
 
+import tech.pegasys.pantheon.plugin.Unstable;
+
 /**
  * A marker interface indicating that this {@link UnformattedData} represents a hash of some sort.
  * The particular algorithm depends on the source, it may be ripemd, keccak, or some other
  * algorithm.
  */
+@Unstable
 public interface Hash extends UnformattedData {}

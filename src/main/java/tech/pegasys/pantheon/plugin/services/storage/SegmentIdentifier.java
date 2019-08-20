@@ -12,10 +12,13 @@
  */
 package tech.pegasys.pantheon.plugin.services.storage;
 
+import tech.pegasys.pantheon.plugin.Unstable;
+
 /**
  * A namespace identifier for the storage instance segment, a grouping of data that should be kept
  * isolated from the data of other segments.
  */
+@Unstable
 public interface SegmentIdentifier {
 
   /**

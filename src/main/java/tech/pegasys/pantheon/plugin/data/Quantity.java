@@ -12,10 +12,13 @@
  */
 package tech.pegasys.pantheon.plugin.data;
 
+import tech.pegasys.pantheon.plugin.Unstable;
+
 /**
  * An interface to mark the {@link BinaryData} that also represents a disceete quantity, such as an
  * unsigned integer value.
  */
+@Unstable
 public interface Quantity extends BinaryData {
 
   /**

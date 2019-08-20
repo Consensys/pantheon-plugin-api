@@ -12,6 +12,8 @@
  */
 package tech.pegasys.pantheon.plugin.data;
 
+import tech.pegasys.pantheon.plugin.Unstable;
+
 import java.math.BigInteger;
 import java.util.Optional;
 
@@ -25,6 +27,7 @@ import java.util.Optional;
  * creation’). Message call transactions will have an address present in the {@link #getTo} method
  * whereas contract creation transactions will not.
  */
+@Unstable
 public interface Transaction {
 
   /**
