@@ -12,9 +12,11 @@
  */
 package tech.pegasys.pantheon.plugin.services.storage;
 
+import tech.pegasys.pantheon.plugin.Unstable;
 import tech.pegasys.pantheon.plugin.services.exception.StorageException;
 
 /** Factory for creating key-value storage instances. */
+@Unstable
 public interface KeyValueStorageFactory {
 
   /**

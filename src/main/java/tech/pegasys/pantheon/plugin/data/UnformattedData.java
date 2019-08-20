@@ -12,5 +12,8 @@
  */
 package tech.pegasys.pantheon.plugin.data;
 
+import tech.pegasys.pantheon.plugin.Unstable;
+
 /** An interface to mark BinaryData that is not a scalar {@link Quantity}. */
+@Unstable
 public interface UnformattedData extends BinaryData {}

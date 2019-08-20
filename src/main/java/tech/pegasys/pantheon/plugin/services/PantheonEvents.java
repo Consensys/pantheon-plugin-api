@@ -12,6 +12,7 @@
  */
 package tech.pegasys.pantheon.plugin.services;
 
+import tech.pegasys.pantheon.plugin.Unstable;
 import tech.pegasys.pantheon.plugin.data.BlockHeader;
 import tech.pegasys.pantheon.plugin.data.Transaction;
 
@@ -27,6 +28,7 @@ import tech.pegasys.pantheon.plugin.data.Transaction;
  *   <li><b>newTransactionAdded</b> - Fired when a new transaction has been added to the node.
  * </ul>
  */
+@Unstable
 public interface PantheonEvents {
 
   /**

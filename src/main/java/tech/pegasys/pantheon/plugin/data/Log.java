@@ -12,9 +12,12 @@
  */
 package tech.pegasys.pantheon.plugin.data;
 
+import tech.pegasys.pantheon.plugin.Unstable;
+
 import java.util.List;
 
 /** A Log entry from a transaction execution. */
+@Unstable
 public interface Log {
 
   /**
