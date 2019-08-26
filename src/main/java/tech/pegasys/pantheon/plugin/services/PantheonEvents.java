@@ -49,7 +49,7 @@ public interface PantheonEvents {
   /**
    * Add a listener watching new transactions added to the node.
    *
-   * @param newTransactionAddedListener The listener that will accept Transaction object as the
+   * @param newTransactionAddedListener The listener that will accept the Transaction object as the
    *     event.
    * @return an object to be used as an identifier when de-registering the event.
    */
@@ -61,6 +61,22 @@ public interface PantheonEvents {
    * @param listenerIdentifier The instance that was returned from addNewTransactionAddedListener;
    */
   void removeNewTransactionAddedListener(Object listenerIdentifier);
+
+  /**
+   * Add a listener watching dropped transactions.
+   *
+   * @param newTransactionDroppedListener The listener that will accept the Transaction object as the
+   *     event.
+   * @return an object to be used as an identifier when de-registering the event.
+   */
+  Object addNewTransactionDroppedListener(TransactionDroppedListener newTransactionDroppedListener);
+
+  /**
+   * Remove the transactionDropped listener from pantheon notifications.
+   *
+   * @param listenerIdentifier The instance that was returned from addTransactionDroppedListener;
+   */
+  void removeTransactionDroppedListener(Object listenerIdentifier);
 
   /** The listener interface for receiving new block propagated events. */
   interface NewBlockPropagatedListener {
@@ -86,5 +102,16 @@ public interface PantheonEvents {
      * @param transaction the new transaction.
      */
     void newTransactionAdded(Transaction transaction);
+  }
+
+  /** The listener interface for receiving transaction dropped events. */
+  interface TransactionDroppedListener {
+
+    /**
+     * Invoked when a transaction is dropped from the node.
+     *
+     * @param transaction the dropped transaction.
+     */
+    void newTransactionDropped(Transaction transaction);
   }
 }
