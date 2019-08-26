@@ -65,8 +65,8 @@ public interface PantheonEvents {
   /**
    * Add a listener watching dropped transactions.
    *
-   * @param newTransactionDroppedListener The listener that will accept the Transaction object as the
-   *     event.
+   * @param newTransactionDroppedListener The listener that will accept the Transaction object as
+   *     the event.
    * @return an object to be used as an identifier when de-registering the event.
    */
   Object addNewTransactionDroppedListener(TransactionDroppedListener newTransactionDroppedListener);
