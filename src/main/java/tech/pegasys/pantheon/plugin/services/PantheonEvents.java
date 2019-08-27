@@ -163,7 +163,11 @@ public interface PantheonEvents {
   /** The listener interface for receiving sync status events. */
   interface SynchronizerListener {
 
-    /** Invoked when the synchronizer status changes */
+    /**
+     * Invoked when the synchronizer status changes
+     *
+     * @param syncStatus the sync status
+     */
     void synchronizerStatusChanged(SyncStatus syncStatus);
   }
 }
