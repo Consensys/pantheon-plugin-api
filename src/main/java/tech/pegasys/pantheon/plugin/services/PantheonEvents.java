@@ -100,17 +100,18 @@ public interface PantheonEvents {
   /**
    * Add a listener watching the synchronizer status.
    *
-   * @param synchronizerListener The listener that will accept the SyncStatus object as the event.
+   * @param synchronizerStatusListener The listener that will accept the SyncStatus object as the
+   *     event.
    * @return an object to be used as an identifier when de-registering the event.
    */
-  Object addSynchronizerListener(SynchronizerListener synchronizerListener);
+  Object addSynchronizerStatusListener(SynchronizerStatusListener synchronizerStatusListener);
 
   /**
    * Remove the logs listener from pantheon notifications.
    *
    * @param listenerIdentifier The instance that was returned from addTransactionDroppedListener;
    */
-  void removeSynchronizerListener(Object listenerIdentifier);
+  void removeSynchronizerStatusListener(Object listenerIdentifier);
 
   /** The listener interface for receiving new block propagated events. */
   interface BlockPropagatedListener {
@@ -161,7 +162,7 @@ public interface PantheonEvents {
   }
 
   /** The listener interface for receiving sync status events. */
-  interface SynchronizerListener {
+  interface SynchronizerStatusListener {
 
     /**
      * Invoked when the synchronizer status changes
