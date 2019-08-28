@@ -14,8 +14,11 @@ package tech.pegasys.pantheon.plugin.services;
 
 import tech.pegasys.pantheon.plugin.Unstable;
 import tech.pegasys.pantheon.plugin.data.BlockHeader;
+import tech.pegasys.pantheon.plugin.data.Log;
 import tech.pegasys.pantheon.plugin.data.SyncStatus;
 import tech.pegasys.pantheon.plugin.data.Transaction;
+
+import java.util.List;
 
 /**
  * This service allows plugins to attach to various events during the normal operation of Pantheon.
@@ -85,7 +88,7 @@ public interface PantheonEvents {
   /**
    * Add a listener watching logs included in new blocks.
    *
-   * @param logsListener The listener that will accept the Transaction object as the event.
+   * @param logsListener The listener that will accept the Logs object as the event.
    * @return an object to be used as an identifier when de-registering the event.
    */
   Object addLogsListener(LogsListener logsListener);
@@ -156,9 +159,9 @@ public interface PantheonEvents {
     /**
      * Invoked when a new block is added.
      *
-     * @param blockHeader the header of the new block from which logs will be extracted
+     * @param logs the new logs from the block added event
      */
-    void logsAdded(BlockHeader blockHeader);
+    void logsAdded(List<Log> logs);
   }
 
   /** The listener interface for receiving sync status events. */
