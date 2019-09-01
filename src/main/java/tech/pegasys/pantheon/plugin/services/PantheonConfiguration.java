@@ -12,7 +12,9 @@
  */
 package tech.pegasys.pantheon.plugin.services;
 
+import java.net.URI;
 import java.nio.file.Path;
+import java.util.Optional;
 
 /** Generally useful configuration provided by Pantheon. */
 public interface PantheonConfiguration {
@@ -23,4 +25,12 @@ public interface PantheonConfiguration {
    * @return location of the storage in the file system of the client.
    */
   Path getStoragePath();
+
+  /**
+   * Url of the enclave Pantheon is connected to if privacy is enabled
+   *
+   * @return an optional containing the url of the enclave Pantheon is connected to, or empty if privacy
+   *     is not enabled
+   */
+  Optional<URI> getEnclaveUrl();
 }
