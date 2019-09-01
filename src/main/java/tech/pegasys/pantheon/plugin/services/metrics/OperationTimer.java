@@ -14,13 +14,14 @@ package tech.pegasys.pantheon.plugin.services.metrics;
 
 import java.io.Closeable;
 
-/** An interface for a timer that records duration of operations for metrics purposes. */
+/** A timer metric that records duration of operations for metrics purposes. */
 public interface OperationTimer {
 
   /**
    * Starts the timer.
    *
-   * @return The produced TimingContext.
+   * @return The produced TimingContext, which must be stopped or closed when the operation being
+   *     timed has completed.
    */
   TimingContext startTimer();
 

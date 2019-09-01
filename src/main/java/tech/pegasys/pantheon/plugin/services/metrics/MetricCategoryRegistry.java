@@ -12,13 +12,18 @@
  */
 package tech.pegasys.pantheon.plugin.services.metrics;
 
-/** Contains a registry of currently defined {@link MetricCategory} objects. */
+/**
+ * Allow registration of {@link MetricCategory} instances so they are recognised by the metrics
+ * system and can be enabled.
+ *
+ * <p>Categories must be registered during plugin initialisation.
+ */
 public interface MetricCategoryRegistry {
 
   /**
-   * Adds a new {@link MetricCategory} object to the MetricCategoryRegistry.
+   * Registers a {@link MetricCategory}.
    *
-   * @param newMetricCategory The {@link MetricCategory} that is being added.
+   * @param newMetricCategory The {@link MetricCategory} that is being registered.
    */
   public void addMetricCategory(final MetricCategory newMetricCategory);
 }

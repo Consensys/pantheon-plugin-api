@@ -12,14 +12,20 @@
  */
 package tech.pegasys.pantheon.plugin.services.metrics;
 
-/** An interface for defining labelled Metrics of various types. */
+/**
+ * A metric with labels associated. Values for the associated labels can be provided to access the
+ * underlying metric.
+ *
+ * @param <T> The type of metric the labels are applied to.
+ */
 public interface LabelledMetric<T> {
 
   /**
-   * Returns an object representing the specified labels.
+   * Returns a metric tagged with the specified label values.
    *
-   * @param labels An array of labels to match.
-   * @return An object representing the specified labels.
+   * @param labels An array of label values in the same order as the labels when creating this
+   *     metric. The number of values provided must match the number of labels.
+   * @return A metric tagged with the specified labels.
    */
   T labels(String... labels);
 }

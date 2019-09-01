@@ -12,7 +12,10 @@
  */
 package tech.pegasys.pantheon.plugin.services.metrics;
 
-/** A counter for capturing metrics data. */
+/**
+ * A counter is a metric to track counts of events or running totals etc. The value of the counter
+ * can only increase.
+ */
 public interface Counter {
 
   /** Increment the counter by 1. */
@@ -21,7 +24,7 @@ public interface Counter {
   /**
    * Increment the counter by a specified amount.
    *
-   * @param amount The amount to increment the counter by.
+   * @param amount The amount to increment the counter by. Must be greater than or equal to 0.
    */
   void inc(long amount);
 }

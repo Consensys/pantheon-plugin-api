@@ -15,13 +15,11 @@ package tech.pegasys.pantheon.plugin.services;
 import tech.pegasys.pantheon.plugin.services.metrics.Counter;
 import tech.pegasys.pantheon.plugin.services.metrics.LabelledMetric;
 import tech.pegasys.pantheon.plugin.services.metrics.MetricCategory;
-import tech.pegasys.pantheon.plugin.services.metrics.Observation;
 import tech.pegasys.pantheon.plugin.services.metrics.OperationTimer;
 
 import java.util.function.DoubleSupplier;
 import java.util.function.IntSupplier;
 import java.util.function.LongSupplier;
-import java.util.stream.Stream;
 
 /** An interface for creating various Metrics components and retrieving observations. */
 public interface MetricsSystem {
@@ -117,19 +115,4 @@ public interface MetricsSystem {
       final LongSupplier valueSupplier) {
     createGauge(category, name, help, () -> (double) valueSupplier.getAsLong());
   }
-
-  /**
-   * Retrieves a stream of registered Observations matching a specified {@link MetricCategory}.
-   *
-   * @param category A {@link MetricCategory} to use as a filter.
-   * @return A stream containing all registered Observations matching the filter.
-   */
-  Stream<Observation> streamObservations(MetricCategory category);
-
-  /**
-   * Retrieves a stream of all registered Observations.
-   *
-   * @return A stream containing all registered Observations.
-   */
-  Stream<Observation> streamObservations();
 }

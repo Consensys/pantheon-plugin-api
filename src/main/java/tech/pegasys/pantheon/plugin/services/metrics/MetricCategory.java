@@ -14,7 +14,13 @@ package tech.pegasys.pantheon.plugin.services.metrics;
 
 import java.util.Optional;
 
-/** A MetricCategory is used to group {@link Observation} objects. */
+/**
+ * A MetricCategory is used to group related metrics. Every metric belongs to one and only one
+ * MetricCategory.
+ *
+ * <p>Categories must be registered with the {@link MetricCategoryRegistry} during plugin
+ * initialisation.
+ */
 public interface MetricCategory {
 
   /**
@@ -25,7 +31,11 @@ public interface MetricCategory {
   String getName();
 
   /**
-   * Gets the application-specific MetricCategory prefix. The prefix is optional.
+   * Gets the application-specific MetricCategory prefix. An empty Optional may be returned if this
+   * category is not application specific.
+   *
+   * <p>The prefix, if present, is prepended to the category name when creating a single combined
+   * name for metrics.
    *
    * @return An optional application prefix.
    */
