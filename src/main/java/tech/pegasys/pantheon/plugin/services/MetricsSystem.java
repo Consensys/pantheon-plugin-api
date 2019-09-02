@@ -75,9 +75,8 @@ public interface MetricsSystem {
       MetricCategory category, String name, String help, String... labelNames);
 
   /**
-   * Creates a gauge for displaying double vales.
-   *
-   * A gauge is a metric to report the current value. The metric value may go up or down.
+   * Creates a gauge for displaying double vales. A gauge is a metric to report the current value.
+   * The metric value may go up or down.
    *
    * @param category The {@link MetricCategory} this gauge is assigned to.
    * @param name A name for this metric.
