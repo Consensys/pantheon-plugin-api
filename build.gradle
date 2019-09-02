@@ -64,24 +64,24 @@ spotless {
 jar { dependsOn checkLicenses }
 
 class FileStateChecker extends DefaultTask {
-    Set<File> files
-    String knownHash
+  Set<File> files
+  String knownHash
 
-    @TaskAction
-    def CheckState() {
-        def allContents = this.files.sort()*.readLines()*.join('\n').join('')
-        def currentHash = MessageDigest.getInstance("SHA-256")
-        .digest(allContents.getBytes("UTF-8")).encodeBase64().toString()
-        if (this.knownHash != currentHash) {
-            throw new GradleException("Was expecting: ${this.knownHash}\nGot instead: ${currentHash}")
-        }
+  @TaskAction
+  def CheckState() {
+    def allContents = this.files.sort()*.readLines()*.join('\n').join('')
+    def currentHash = MessageDigest.getInstance("SHA-256")
+      .digest(allContents.getBytes("UTF-8")).encodeBase64().toString()
+    if (this.knownHash != currentHash) {
+      throw new GradleException("Was expecting: ${this.knownHash}\nGot instead: ${currentHash}")
     }
+  }
 }
 
 tasks.register('checkAPIChanges', FileStateChecker) {
-    description = "Checks that the API for the Plugin-API project does not change without deliberate thought"
-    files = sourceSets.main.allJava.files
-    knownHash = 'oMigFFzwIhXKYFGpzi2wyXn3D/lbtjusQqxchmi8o3A='
+  description = "Checks that the API for the Plugin-API project does not change without deliberate thought"
+  files = sourceSets.main.allJava.files
+  knownHash = 'oMigFFzwIhXKYFGpzi2wyXn3D/lbtjusQqxchmi8o3A='
 }
 check.dependsOn('checkAPIChanges')
 
