@@ -69,9 +69,12 @@ class FileStateChecker extends DefaultTask {
 
   @TaskAction
   def CheckState() {
-    def allContents = this.files.sort()*.readLines()*.join('\n').join('')
-    def currentHash = MessageDigest.getInstance("SHA-256")
-      .digest(allContents.getBytes("UTF-8")).encodeBase64().toString()
+    def digestor = MessageDigest.getInstance("SHA-256")
+
+    this.files.sort().each {
+      digestor.update(it.readBytes())
+    }
+    def currentHash = digestor.digest()encodeBase64().toString()
     if (this.knownHash != currentHash) {
       throw new GradleException("Was expecting: ${this.knownHash}\nGot instead: ${currentHash}")
     }
@@ -81,7 +84,7 @@ class FileStateChecker extends DefaultTask {
 tasks.register('checkAPIChanges', FileStateChecker) {
   description = "Checks that the API for the Plugin-API project does not change without deliberate thought"
   files = sourceSets.main.allJava.files
-  knownHash = 'oMigFFzwIhXKYFGpzi2wyXn3D/lbtjusQqxchmi8o3A='
+  knownHash = 'lCi7ifFOWtZLd3LAJ/kt3EPJioc348GYAwpqag7CuDk='
 }
 check.dependsOn('checkAPIChanges')
 
