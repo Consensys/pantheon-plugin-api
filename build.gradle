@@ -81,7 +81,7 @@ class FileStateChecker extends DefaultTask {
 tasks.register('checkAPIChanges', FileStateChecker) {
     description = "Checks that the API for the Plugin-API project does not change without deliberate thought"
     files = sourceSets.main.allJava.files
-    knownHash = 'PsLAuqib9QLfqBsWIr1xLd5YwbvwWeKLlqcdAA5NqkA='
+    knownHash = 'oMigFFzwIhXKYFGpzi2wyXn3D/lbtjusQqxchmi8o3A='
 }
 check.dependsOn('checkAPIChanges')
 
