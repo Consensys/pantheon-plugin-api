@@ -27,10 +27,10 @@ public interface PantheonConfiguration {
   Path getStoragePath();
 
   /**
-   * Url of the enclave Pantheon is connected to if privacy is enabled
+   * Url of the enclave that stores private transaction data.
    *
    * @return an optional containing the url of the enclave Pantheon is connected to, or empty if privacy
-   *     is not enabled
+   *     is not enabled.
    */
   Optional<URI> getEnclaveUrl();
 }
