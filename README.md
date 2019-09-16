@@ -1,2 +1,2 @@
-# Pantheon Plugin APIs
-This repo has been consumed into PegaSysEng/Pantheon in the `plugins` gradle sub-project/folder
+# Besu Plugin APIs
+This repo has been consumed into hyperledger/besu in the `plugins` gradle sub-project/folder
